@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 class Signin extends React.Component{
@@ -25,13 +26,14 @@ class Signin extends React.Component{
             })
         })
             .then(response=>response.json())
-            .then(data=>{
-                if(data ==='success'){
+            .then(user=>{
+                if(user.id){
+                    this.props.loadUser(user);
                     this.props.onRouteChange('home');
                 }
             })
     }
-
+    
     render(){
         const { onRouteChange } = this.props;
         return(
