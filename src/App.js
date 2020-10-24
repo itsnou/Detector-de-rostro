@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Clarifai from 'clarifai';
 import Signin from './components/Signin/Signin';
 import Navigation from './components/Navigation/Navigation';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
@@ -10,11 +9,6 @@ import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
 
 import './App.css';
-
-
-const app = new Clarifai.App({
-  apiKey: '8ac4a070129b4a12ba9309639b92d6ac'
- });
 
 const particlesOpt={
   particles: {
@@ -84,12 +78,17 @@ class App extends Component {
  
   onSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    app.models.predict(
-      'c0c0ac362b03416da06ab3fa36fb58e3',
-      this.state.input)
+        fetch('https://limitless-retreat-78330.herokuapp.com/imageurl', {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+              input: this.state.input
+            })
+        })
+      .then(response => response.json())
       .then(response => {
         if(response){
-          fetch('http://localhost:3000/image', {
+          fetch('https://limitless-retreat-78330.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
