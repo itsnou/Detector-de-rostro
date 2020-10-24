@@ -7,7 +7,6 @@ import Register from './components/Register/Register';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
-const serve = require('serve');
 
 import './App.css';
 
