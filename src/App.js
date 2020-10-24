@@ -11,10 +11,6 @@ const serve = require('serve');
 
 import './App.css';
 
-const server = serve(__dirname, {
-  port: process.env.DATABASE_URL,
-  ignore: ['node_modules']
-})
 
 const particlesOpt={
   particles: {
