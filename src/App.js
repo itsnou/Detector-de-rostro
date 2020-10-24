@@ -7,8 +7,14 @@ import Register from './components/Register/Register';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
+const serve = require('serve');
 
 import './App.css';
+
+const server = serve(__dirname, {
+  port: process.env.DATABASE_URL,
+  ignore: ['node_modules']
+})
 
 const particlesOpt={
   particles: {
